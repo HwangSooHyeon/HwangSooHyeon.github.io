@@ -93,11 +93,11 @@ analytics:
 
 # Site Author
 author:
-  name             : "Your Name"
+  name             : "AMB"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an **amazing** person."
-  location         : "Somewhere"
-  email            :
+  bio              : "코딩 공부, 일어 공부, 일기장, 취미생활"
+  location         : "경상남도 진주시"
+  email            : "mikaelh1651@gmail.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
