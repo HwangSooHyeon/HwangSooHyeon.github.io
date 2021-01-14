@@ -21,9 +21,9 @@ title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "AMB"
 description              : "코딩 공부, 일어 공부, 일기장, 취미생활"
-url                      : "https://hwangsoohyeon.github.io"# the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-baseurl                  : ""# the subpath of your site, e.g. "/blog"
-repository               : "HwangSooHyeon/hwangsoohyeon.github.io"# GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+url                      : "https://hwangsoohyeon.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+baseurl                  : "" # the subpath of your site, e.g. "/blog"
+repository               : "HwangSooHyeon/hwangsoohyeon.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
@@ -94,7 +94,7 @@ analytics:
 # Site Author
 author:
   name             : "AMB"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/AMB_avatar.png" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "코딩 공부, 일어 공부, 일기장, 취미생활"
   location         : "경상남도 진주시"
   email            : "mikaelh1651@gmail.com"
