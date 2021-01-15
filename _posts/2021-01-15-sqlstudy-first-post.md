@@ -21,12 +21,12 @@ SQL의 정의와 주로 사용하게 되는 문법들은 다음과 같다.
 ### 데이터 정의어(Data Definition Language)
 __: 데이터의 구조를 정의하기 위한 테이블 생성, 수정, 삭제 명령어__
 
-```SQL
+~~~SQL
 CREATE ## 테이블 생성
 DROP ## 테이블 삭제
 ALTER ## 테이블 수정
 TRUNCATE ## 테이블에 있는 모든 데이터 삭제
-```
+~~~
 
 ### 데이터 조작어(Data Manipulation Language)  
 __: 데이터 추가, 조회,  수정 및 삭제를 위한 명령어__  
