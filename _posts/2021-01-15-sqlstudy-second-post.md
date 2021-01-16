@@ -12,7 +12,7 @@ date: 2021-01-16 01:23:00 +0900
 
 ### 1. 테이블 내 데이터 추가
 
-```SQL
+```sql
 -- INSERT
 INSERT INTO CUSOMERTBL(CST_ID, CST_NAME, CST_AGE, CST_DATE)
 VALUES (1, 홍길동, 22, SYSDATE);
@@ -23,7 +23,7 @@ VALUES (1, 홍길동, 22, SYSDATE);
 
 테이블에 데이터를 추가할 때 자동으로 증가하는 __PRIMARY KEY__ 값을 생성해주고 싶으면 시퀀스를 사용할 수 있다.
 
-```SQL
+```sql
 -- 시퀀스 생성
 CREATE SEQUENCE SEQ_ITEMTBL_ITM_NO START WITH 1 INCREMENT BY 1 NOMAXVALUE NOCACHE;
 -- 시작 값이 1이고 1씩 증가하는 SEQ_ITEM_ITM_NO를 생성
@@ -33,7 +33,7 @@ CREATE SEQUENCE SEQ_ITEMTBL_ITM_NO START WITH 1 INCREMENT BY 1 NOMAXVALUE NOCACH
 
 ### 2. 테이블 내 데이터 수정
 
-```SQL
+```sql
 -- UPDATE
 UPDATE ITEMTBL SET ITM_PRICE=4500 WHERE ITM_NO=5;
 -- ITEMTBL 내의 ITM_PRICE=4500으로 바꾸되, ITM_NO=5인 데이터만 진행
@@ -41,7 +41,7 @@ UPDATE ITEMTBL SET ITM_PRICE=4500 WHERE ITM_NO=5;
 
 ### 3. 테이블 내 데이터 삭제
 
-```SQL
+```sql
 -- DELETE
 DELETE FROM ITEMTBL WHERE ITM_NO=6;
 -- ITEMTBL에서 데이터를 삭제하되, ITM_NO=6인 데이터만 진행
@@ -50,7 +50,7 @@ DELETE FROM ITEMTBL WHERE ITM_NO=6;
 
 ### 4. 테이블 내 데이터 선택 및 조회
 
-```SQL
+```sql
 -- SELECT
 SELECT * FROM CUSTOMERTBL WHERE CST_AGE>=10 ORDER BY CST_AGE ASC; 
 -- CUSTOMERTBL의 전체 컬럼을 선택하되, CST_AGE>=10인 경우만 출력하고 CST_AGE에 대해 오름차순 정렬
@@ -58,7 +58,7 @@ SELECT * FROM CUSTOMERTBL WHERE CST_AGE>=10 ORDER BY CST_AGE ASC;
 
 __SELECT__ 는 중요한 명령어 이므로 자세히 정리하고 넘어가자.  
 __SELECT__ 의 구조를 풀어쓰면,
-```SQL
+```sql
 SELECT 선택할 컬럼(들) FROM 컬럼(들)이 속한 테이블 WHERE 필터링 조건 ORDER BY 정렬 조건
 ```
 이고, 이를 설명하면 아래와 같다.
@@ -67,7 +67,7 @@ SELECT 선택할 컬럼(들) FROM 컬럼(들)이 속한 테이블 WHERE 필터�
 3. 정렬 조건에 맞춰 데이터들을 정렬 후 출력한다.  
   
 위 과정을 숙지하고 다른 예문을 보자.
-```SQL
+```sql
 SELECT * FROM STUDENTTBL WHERE STD_SCORE_KOR>=50 ORDER BY STD_CLASS ASC, TD_SCORE_KOR ASC;
 ```
 위 예문은 __STUDENTTBL__ 의 전체 컬럼을 선택하되, __STD_SCORE_KOR>=50__ 인 경우만 출력하고 __STD_CLASS__ 에 대해 오름차순 정렬한 후 <u>만약 같은 값</u>이면 __TD_SCORE_KOR__ 에 대해 오름차순 정렬한다. 라고 해석할 수 있다.  
@@ -75,7 +75,7 @@ SELECT * FROM STUDENTTBL WHERE STD_SCORE_KOR>=50 ORDER BY STD_CLASS ASC, TD_SCOR
     
 예문을 하나 더 확인해보자.
 
-```SQL
+```sql
 SELECT STD_NO, STD_NAME, (KOR+ENG+MATH) STD_TOT, ROUND((KOR+ENG+MATH)/3, 2) STD_AVG
 FROM STUDENTTBL ORDER BY STD_TOT ASC;
 ```
