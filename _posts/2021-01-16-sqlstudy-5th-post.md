@@ -1,0 +1,152 @@
+---
+title: "SQL 스터디 5일차: SQL EXAM"
+excerpt: "SQL활용 평가"
+
+categories:
+    - webprogramming
+tags:
+    - SQL
+    - EXAM
+date: 2021-01-17 01:42:00 +0900
+---
+
+### SQL TEST
+
+##### 1. 판매자 테이블(SELLER_EXAM)을 생성하시오.
+```sql
+/*
+컬럼:
+판매자 아이디(S_ID, VARCHAR2)
+판매자 이름(S_NAME, VARCHAR2)
+판매자 연락처(S_TEL, VARCHAR2)
+등록일(S_DATE, DATE)
+제약조건: 판매자 아이디 기본키
+*/
+CREATE TABLE SELLER_EXAM(
+    S_ID VARCHAR2(30) PRIMARY KEY,
+    S_NAME VARCHAR2(30),
+    S_TEL VARCHAR2(15),
+    S_DATE DATE
+);
+COMMIT;
+```
+
+##### 2. 판매자를 추가하시오.
+```sql
+/*
+아이디가 'a', 'b', 'c'인 판매자를 추가하고, 
+'d'인 판매자는 추가 후 취소하시오. 
+(COMMIT, ROLLBACK 포함)
+*/
+INSERT INTO SELLER_EXAM(S_ID, S_NAME, S_TEL, S_DATE) 
+VALUES('a', '홍길동', '010-0000-1234',CURRENT_DATE);
+INSERT INTO SELLER_EXAM(S_ID, S_NAME, S_TEL, S_DATE) 
+VALUES('b', '김철수', '010-0000-1235',CURRENT_DATE);
+INSERT INTO SELLER_EXAM(S_ID, S_NAME, S_TEL, S_DATE) 
+VALUES('c', '이영희', '010-0000-1236',CURRENT_DATE);
+COMMIT;
+INSERT INTO SELLER_EXAM(S_ID, S_NAME, S_TEL, S_DATE) 
+VALUES('d', '박은혜', '010-0000-1236',CURRENT_DATE);
+ROLLBACK;
+```
+
+##### 3. 판매자 아이디를 기준으로 오름차순 조회하시오.
+```sql
+SELECT S_ID, S_NAME, S_TEL, TO_CHAR(S_DATE, 'YYYY-MM-DD') FROM SELLER_EXAM ORDER BY S_ID ASC;
+```
+
+##### 4. 3번 결과에서 ROW_NUMBER()를 이용하여 1~2 범위의 데이터만 조회하시오.
+```sql
+SELECT * FROM (
+    SELECT S_ID, S_NAME, S_TEL, TO_CHAR(S_DATE, 'YYYY-MM-DD'), 
+        ROW_NUMBER() OVER (ORDER BY S_ID ASC) S_ROWS FROM SELLER_EXAM
+) WHERE S_ROWS BETWEEN 1 AND 2;
+```
+
+##### 5. 물품테이블(ITEM_EXAM)을 생성하시오.
+```sql
+/*
+컬럼:
+물품번호(I_NO, NUMBER)
+물품명(I_NAME, VARCHAR2)
+물품가격(I_PRICE, NUMBER)
+판매자(I_SELLER, VARCHAR2)
+분류코드(I_CODE, CHAR(1))
+등록일(I_DATE, DATE)
+제약조건:
+물품번호 기본키, 판매자 테이블의 판매자 아이디와
+물품테이블의 판매자를 외래키로 연결
+시퀀스 생성: SEQ_ITEM_EXAM_NO(시작값 1, 증가값 1)
+*/
+
+CREATE TABLE ITEM_EXAM(
+    I_NO NUMBER PRIMARY KEY, 
+    I_NAME VARCHAR2(30), 
+    I_PRICE NUMBER, 
+    I_SELLER VARCHAR2(30), -- SELLER_EXAM S_ID와 같은 타입 
+    I_CODE CHAR(1), 
+    I_DATE DATE,
+    FOREIGN KEY(I_SELLER) REFERENCES SELLER_EXAM(S_ID)
+);
+COMMIT;
+
+CREATE SEQUENCE SEQ_ITEM_EXAM_NO START WITH 1 INCREMENT BY 1 NOMAXVALUE NOCACHE;
+COMMIT;
+```
+
+##### 6. 물품테이블에 물품정보 5개를 추가하시오.
+```sql
+/*
+시퀀스 사용
+분류 코드는 'A', 'B', 'C' 중 하나
+*/
+
+INSERT INTO ITEM_EXAM(I_NO, I_NAME, I_PRICE, I_SELLER, I_CODE, I_DATE)
+    VALUES(SEQ_ITEM_EXAM_NO.NEXTVAL, '사과', 1001, 'a','C',CURRENT_DATE);
+INSERT INTO ITEM_EXAM(I_NO, I_NAME, I_PRICE, I_SELLER, I_CODE, I_DATE)
+    VALUES(SEQ_ITEM_EXAM_NO.NEXTVAL, '배', 1002, 'a','C',CURRENT_DATE);
+INSERT INTO ITEM_EXAM(I_NO, I_NAME, I_PRICE, I_SELLER, I_CODE, I_DATE)
+    VALUES(SEQ_ITEM_EXAM_NO.NEXTVAL, '복숭아', 1003, 'c','A',CURRENT_DATE);
+INSERT INTO ITEM_EXAM(I_NO, I_NAME, I_PRICE, I_SELLER, I_CODE, I_DATE)
+    VALUES(SEQ_ITEM_EXAM_NO.NEXTVAL, '포도', 1004, 'a','B',CURRENT_DATE);
+INSERT INTO ITEM_EXAM(I_NO, I_NAME, I_PRICE, I_SELLER, I_CODE, I_DATE)
+    VALUES(SEQ_ITEM_EXAM_NO.NEXTVAL, '딸기', 1005, 'b','C',CURRENT_DATE);
+COMMIT;
+```
+
+##### 7. 물품번호가 2번인 물품의 가격을 3980으로, 분류코드는 D로 변경하시오.
+```sql
+UPDATE ITEM_EXAM SET I_PRICE=3980, I_CODE='D' WHERE I_NO=2;
+COMMIT;
+```
+
+##### 8. 물품번호가 5번인 품목을 삭제하시오.
+```sql
+DELETE FROM ITEM_EXAM WHERE I_NO=5;
+COMMIT;
+```
+
+##### 9. 물품테이블에서 판매자별 물품갯수와 물품가격평균(소숫점 1자리)을 조회하시오.
+```sql
+SELECT I_SELLER, COUNT(*), ROUND(AVG(I_PRICE),1) FROM ITEM_EXAM GROUP BY I_SELLER;
+```
+
+##### 10. 판매자테이블, 물품테이블을 JOIN하시오.
+```sql
+/*
+물품번호, 물품명, 물품가격, 판매자이름, 판매자연락처 조회
+*/
+SELECT ITEM_EXAM.I_NO, ITEM_EXAM.I_NAME, ITEM_EXAM.I_PRICE,
+    SELLER_EXAM.S_NAME, SELLER_EXAM.S_TEL
+FROM SELLER_EXAM INNER JOIN ITEM_EXAM 
+ON SELLER_EXAM.S_ID = ITEM_EXAM.I_SELLER 
+```
+
+##### 11. 위 10번 결과에서 물품가격이 1000원 이상인 경우만 조회하시오.
+```sql
+SELECT ITEM_EXAM.I_NO, ITEM_EXAM.I_NAME, ITEM_EXAM.I_PRICE,
+    SELLER_EXAM.S_NAME, SELLER_EXAM.S_TEL
+FROM SELLER_EXAM INNER JOIN ITEM_EXAM 
+ON SELLER_EXAM.S_ID = ITEM_EXAM.I_SELLER
+WHERE ITEM_EXAM.I_PRICE >= 1000;
+```
