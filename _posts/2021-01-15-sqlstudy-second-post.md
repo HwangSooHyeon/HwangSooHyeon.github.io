@@ -13,10 +13,10 @@ last_modified_at: 2021-01-16 01:23:00
 ### 1. 테이블 내 데이터 추가
 
 ```SQL
-## INSERT
+-- INSERT
 INSERT INTO CUSOMERTBL(CST_ID, CST_NAME, CST_AGE, CST_DATE)
 VALUES (1, 홍길동, 22, SYSDATE);
-## CUSTOMERTBL에 위 데이터를 삽입
+-- CUSTOMERTBL에 위 데이터를 삽입
 ```
 * __주의사항__ 
 데이터를 삽입할 때 __PRIMARY KEY__(CST_ID)가 중복될 경우, 무결성 제약조건(중복)에 의해 오류가 발생한다.  
@@ -24,9 +24,9 @@ VALUES (1, 홍길동, 22, SYSDATE);
 테이블에 데이터를 추가할 때 자동으로 증가하는 __PRIMARY KEY__ 값을 생성해주고 싶으면 시퀀스를 사용할 수 있다.
 
 ```SQL
-## 시퀀스 생성
+-- 시퀀스 생성
 CREATE SEQUENCE SEQ_ITEMTBL_ITM_NO START WITH 1 INCREMENT BY 1 NOMAXVALUE NOCACHE;
-## 시작 값이 1이고 1씩 증가하는 SEQ_ITEM_ITM_NO를 생성
+-- 시작 값이 1이고 1씩 증가하는 SEQ_ITEM_ITM_NO를 생성
 ```
 * __NOMAXVALUE__: 최대값 제한 없음
 * __NOCACHE__: 메모리에 캐시를 할당하지 않는다는 뜻으로 시퀀스의 속도는 느려지지만 용량은 작아지는 역할을 한다. 또한 NEXTVAL을 사용했을 때 시퀀스의 시작 값이 바뀌지 않는다.(연속적)
@@ -34,26 +34,26 @@ CREATE SEQUENCE SEQ_ITEMTBL_ITM_NO START WITH 1 INCREMENT BY 1 NOMAXVALUE NOCACH
 ### 2. 테이블 내 데이터 수정
 
 ```SQL
-## UPDATE
+-- UPDATE
 UPDATE ITEMTBL SET ITM_PRICE=4500 WHERE ITM_NO=5;
-## ITEMTBL 내의 ITM_PRICE=4500으로 바꾸되, ITM_NO=5인 데이터만 진행
+-- ITEMTBL 내의 ITM_PRICE=4500으로 바꾸되, ITM_NO=5인 데이터만 진행
 ```
 
 ### 3. 테이블 내 데이터 삭제
 
 ```SQL
-## DELETE
+-- DELETE
 DELETE FROM ITEMTBL WHERE ITM_NO=6;
-## ITEMTBL에서 데이터를 삭제하되, ITM_NO=6인 데이터만 진행
+-- ITEMTBL에서 데이터를 삭제하되, ITM_NO=6인 데이터만 진행
 ```
 실제 DB가 구축 되고 난 뒤 테이블 내 데이터는 함부로 삭제할 수 없다. 왜냐하면 해당 데이터와 연관된 데이터들이 있기 때문이다. 이는 실제 웹상에서도 확인할 수 있는데 탈퇴한 계정의 같은 아이디로 재가입을 못하는 경우 등이다.
 
 ### 4. 테이블 내 데이터 선택 및 조회
 
 ```SQL
-## SELECT
+-- SELECT
 SELECT * FROM CUSTOMERTBL WHERE CST_AGE>=10 ORDER BY CST_AGE ASC; 
-## CUSTOMERTBL의 전체 컬럼을 선택하되, CST_AGE>=10인 경우만 출력하고 CST_AGE에 대해 오름차순 정렬
+-- CUSTOMERTBL의 전체 컬럼을 선택하되, CST_AGE>=10인 경우만 출력하고 CST_AGE에 대해 오름차순 정렬
 ```
 
 __SELECT__ 는 중요한 명령어 이므로 자세히 정리하고 넘어가자.  

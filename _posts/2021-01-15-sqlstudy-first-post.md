@@ -22,28 +22,28 @@ SQL의 정의와 주로 사용하게 되는 문법들은 다음과 같다.
 __: 데이터의 구조를 정의하기 위한 테이블 생성, 수정, 삭제 명령어__
 
 ```sql
-CREATE ## 테이블 생성
-DROP ## 테이블 삭제
-ALTER ## 테이블 수정
-TRUNCATE ## 테이블에 있는 모든 데이터 삭제
+CREATE -- 테이블 생성
+DROP -- 테이블 삭제
+ALTER -- 테이블 수정
+TRUNCATE -- 테이블에 있는 모든 데이터 삭제
 ```
 
 ### 데이터 조작어(Data Manipulation Language)  
 __: 데이터 추가, 조회,  수정 및 삭제를 위한 명령어__  
 
 ```sql
-SELECT ## 데이터 조회
-INSERT ## 데이터 입력
-UPDATE ## 데이터 수정
-DELETE ## 데이터 삭제
+SELECT -- 데이터 조회
+INSERT -- 데이터 입력
+UPDATE -- 데이터 수정
+DELETE -- 데이터 삭제
 ```
 
 ### 데이터 제어어(Data Control Language) 
 __: 사용자에게 권한 생성 혹은 권한 삭제 명령어__
 
 ```sql
-GRANT ## 권한 생성
-REVOKE ## 권한 삭제
+GRANT -- 권한 생성
+REVOKE -- 권한 삭제
 ```
 
 ---
@@ -60,7 +60,7 @@ SQL의 정의와 SQL의 여러 핵심어들을 알아보았으니 다음으로 C
 이 있다. oracle에서 타이핑하는 방법은 다음과 같다.
 
 ```sql
-## MEMBERTBL 생성
+-- MEMBERTBL 생성
 CREATE TABLE MEMBERTBL(
     USER_ID VARCHAR2(30) PRIMARY KEY,
     USER_PW VARCHAR2(200),
@@ -91,17 +91,17 @@ __VARCHAR2(4)__='A'
 테이블을 생성했으니 다음으로 테이블 내의 컬럼을 조정하는 명령어들을 알아보자.
 
 ```sql
-## 컬럼 추가
+-- 컬럼 추가
 ALTER TABLE MEMBERTBL ADD USER_ADDR VARCHAR2(200);
-## MEMBERTBL에 데이터타입 VARCHAR2(200)인 USER_ADDR 컬럼을 추가
+-- MEMBERTBL에 데이터타입 VARCHAR2(200)인 USER_ADDR 컬럼을 추가
 
-## 컬럼 수정
+-- 컬럼 수정
 ALTER TABLE MEMBERTBL MODIFY USER_ADDR VARCHAR2(300);
-## MEMBERTBL의 컬럼 USER_ADDR의 데이터타입 크기를 300으로 수정
+-- MEMBERTBL의 컬럼 USER_ADDR의 데이터타입 크기를 300으로 수정
 
-## 컬럼 제거
+-- 컬럼 제거
 ALTER TABLE MEMBERTBL DROP COLUMN USER_ADDR;
-## MEMBERTBL의 컬럼 USER_ADDR을 테이블에서 제거
+-- MEMBERTBL의 컬럼 USER_ADDR을 테이블에서 제거
 ```
 
 ### 3. 테이블 관계 생성
@@ -109,10 +109,10 @@ ALTER TABLE MEMBERTBL DROP COLUMN USER_ADDR;
 CREATE를 통해 테이블을 생성하면 처음엔 모두 독립적인 상태이다. 이때 각 테이블끼리 관계를 형성하려면(외래키) 다음과 같이 작성한다.
 
 ```sql
-## ORDERTBL이 존재하면 제거
+-- ORDERTBL이 존재하면 제거
 DROP TABLE ORDERTBL CASCADE CONSTRAINTS;
 
-## ORDERTBL 생성
+-- ORDERTBL 생성
 CREATE TABLE ORDERTBL
 (
 	ORD_NO number NOT NULL,
@@ -123,13 +123,13 @@ CREATE TABLE ORDERTBL
 	PRIMARY KEY (ORD_NO)
 );
 
-## ORDERTBL 내의 CST_ID를 CUSTOMERTBL에서 받아온 외래키로 설정
+-- ORDERTBL 내의 CST_ID를 CUSTOMERTBL에서 받아온 외래키로 설정
 ALTER TABLE ORDERTBL
 	ADD FOREIGN KEY (CST_ID)
 	REFERENCES CUSTOMERTBL (CST_ID)
 ;
 
-## ORDERTBL 내의 ITM_NO를 ITEMTBL에서 받아온 외래키로 설정
+-- ORDERTBL 내의 ITM_NO를 ITEMTBL에서 받아온 외래키로 설정
 ALTER TABLE ORDERTBL
 	ADD FOREIGN KEY (ITM_NO)
 	REFERENCES ITEMTBL (ITM_NO)
