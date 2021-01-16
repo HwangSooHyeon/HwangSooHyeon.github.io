@@ -3,7 +3,7 @@ title: "SQL 스터디 2일차: Oracle DML1"
 excerpt: "INSERT, UPDATE, DELETE, SELECT"
 
 categories:
-    - 웹프로그래밍
+    - webprogramming
 tags:
     - SQL
     - 스터디

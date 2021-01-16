@@ -3,7 +3,7 @@ title: "SQL 스터디 3일차: Oracle DML2"
 excerpt: "COUNT, CALCULATION, GROUP, LIMIT"
 
 categories:
-    - 웹프로그래밍
+    - webprogramming
 tags:
     - SQL
     - 스터디

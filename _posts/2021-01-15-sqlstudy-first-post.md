@@ -3,7 +3,7 @@ title: "SQL 스터디 1일차: Oracle DDL"
 excerpt: "테이블 생성, 삭제, 수정"
 
 categories:
-    - 웹프로그래밍
+    - webprogramming
 tags:
     - SQL
     - 스터디
