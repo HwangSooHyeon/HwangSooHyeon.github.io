@@ -7,7 +7,7 @@ categories:
 tags:
     - SQL
     - 스터디
-last_modified_at: 2021-01-16 20:12:00
+date: 2021-01-16 20:12:00 +0900
 ---
 
 2일차 SELECT를 이어서 진행한다.
