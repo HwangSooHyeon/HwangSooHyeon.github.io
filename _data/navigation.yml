@@ -2,11 +2,11 @@
 main:
   - title: "웹프로그래밍"
     url: /categories/웹프로그래밍/
-  - title: "Categories"
+  - title: "카테고리"
     url: /categories/
-  - title: "Tags"
+  - title: "태그"
     url: /tags/
-  - title: "About"
+  - title: "소개"
     url: /about/
 
   # - title: "About"
