@@ -35,9 +35,9 @@ SQL이 끝나고 Java를 시작했다. 기존에 학교에서 사용한 C와 비
 
 ### 2. 이클립스 기능
 ##### 2.1. 자주 쓰는 단축키
-ctrl + space: 자동완성(가이드라인)
-ctrl + shift + o: 자동 import
-ctrl + i: 들여쓰기 맞춤
+ctrl + space: 자동완성(가이드라인)  
+ctrl + shift + o: 자동 import  
+ctrl + i: 들여쓰기 맞춤  
 
 ##### 2.2. 자주 쓰는 기능
 * 상위 탭 Source에서 오버라이딩, getter & setter, 생성자, toString 등을 생성할 수 있다.  
