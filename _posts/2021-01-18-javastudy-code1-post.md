@@ -16,7 +16,7 @@ Java의 JFrame를 이용해 DB의 데이터를 출력하는 코드를 작성한�
 ### 0. 자바 프로젝트 생성
 
 * pom.xml 생성: 자바 프로젝트 우클릭 `=>` Configure `=>` Convert to maven project `=>` finish
-* pom.xml 설정: pom.xml 클릭 -> `</build>`와 `</project>` 사이에 `<repositories>`와 `<dependencies>`를 삽입(사용하고자 하는 툴)
+* pom.xml 설정: pom.xml 클릭 -> `</build>`와 `</project>` 사이에 `<repositories>`와 `<dependencies>`를 삽입(사용하고자 하는 툴)  
 
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -135,7 +135,7 @@ public class MemberDAO {
 			// ps 실행 후 결과 값이 rs에 보관됨
 			ResultSet rs = ps.executeQuery();
 			
-            // 결과 값을 닮을 memberList 정의
+                        // 결과 값을 담을 memberList 정의
 			ArrayList<String[]> memberList = new ArrayList<String[]>();
 			
 			while(rs.next()) { // select로 실행된 결과를 한 줄씩 가져와서 memberList에 저장
@@ -214,17 +214,17 @@ public class MyFrame extends JFrame implements ActionListener{
 	
 	private void createMenu() {
 		// JMenuBar -> JMenu -> JMenuItem 순서로 만들어야함
-        // JMenuBar: 아무것도 없는 화면에 메뉴 바를 깔아 줌
+                // JMenuBar: 아무것도 없는 화면에 메뉴 바를 깔아 줌
 		menuBar = new JMenuBar();
-        // JMenu: 깔려 있는 메뉴바에 상위 메뉴를 추가함
-        // 예시) file, edit, window, help, etc.
+                // JMenu: 깔려 있는 메뉴바에 상위 메뉴를 추가함
+                // 예시) file, edit, window, help, etc.
 		menu1 = new JMenu("회원");
 		
-        // JMenuItem: JMenu로 만든 상위 메뉴의 하위 메뉴들
-        // 예시) file 하단의 new file, open file, save as, exit, etc.
+                // JMenuItem: JMenu로 만든 상위 메뉴의 하위 메뉴들
+                // 예시) file 하단의 new file, open file, save as, exit, etc.
 		menuItem1 = new JMenuItem("DB 연결");
-        // addActionListener: 이벤트가 동작할 수 있게 선언해주는 것
-        // 이게 빠지면 메뉴를 눌러도 아무일이 안일어남
+                // addActionListener: 이벤트가 동작할 수 있게 선언해주는 것
+                // 이게 빠지면 메뉴를 눌러도 아무일이 안일어남
 		menuItem1.addActionListener(this);
 		
 		menuItem2 = new JMenuItem("로그인");
@@ -249,46 +249,46 @@ public class MyFrame extends JFrame implements ActionListener{
 		menu1.addSeparator(); // 구분선
 		menu1.add(menuItem4); // 종료
 		
-        // 메뉴 바에 상위 메뉴를 추가함
+                // 메뉴 바에 상위 메뉴를 추가함
 		menuBar.add(menu1);
-        // 설정이 다 끝난 메뉴바를 설정 완료함
+                // 설정이 다 끝난 메뉴바를 설정 완료함
 		this.setJMenuBar(menuBar);
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// 메뉴가 클릭되었을 때 수행해야할 소스코드 작성
+	// 메뉴가 클릭되었을 때 수행해야할 소스코드 작성
 		
-        // menuItem1을 실행했을 때
+                // menuItem1을 실행했을 때
 		if(e.getSource() == menuItem1) { // DB 연결
-            // 현재 연결 상태를 확인함
-            // 연결이 실패하면 null이 반환되므로 이를 이용해 DB 접속 여부 판단
+                        // 현재 연결 상태를 확인함
+                        // 연결이 실패하면 null이 반환되므로 이를 이용해 DB 접속 여부 판단
 			conn = DBConn.getConnection();
 			if(conn != null) {
 				JOptionPane.showMessageDialog(this, "DB 접속 성공", "성공", JOptionPane.INFORMATION_MESSAGE);
 			}else {
 				JOptionPane.showMessageDialog(this, "DB 접속 실패", "실패", JOptionPane.ERROR_MESSAGE);
 			}
-;		}else if(e.getSource() == menuItem2) {
+		}else if(e.getSource() == menuItem2) {
 			
 		}else if(e.getSource() == menuItem3) {
 			
 		}else if(e.getSource() == menuItem5) { // 회원목록
-            // 현재 conn이 글로벌 변수이고 menuItem1을 먼저 클릭해서
-            // conn의 연결 정보를 받아 두었으므로 정상적으로 연결되었으면
-            // null이 나올 수 없음 이를 이용해 이벤트 작성
+                        // 현재 conn이 글로벌 변수이고 menuItem1을 먼저 클릭해서
+                        // conn의 연결 정보를 받아 두었으므로 정상적으로 연결되었으면
+                        // null이 나올 수 없음 이를 이용해 이벤트 작성
 			if(conn != null) {
-                // memberDAO의 select 결과 값을 list로 받음
+                                // memberDAO의 select 결과 값을 list로 받음
 				MemberDAO memberDAO = new MemberDAO(conn);
 				ArrayList<String[]> list = memberDAO.selectMember();
 							
-			/*	for(String[] tmp : list) {
+			    /*for(String[] tmp : list) {
 					for(int i=0; i<tmp.length; i++) {
 						System.out.println(tmp[i]);
 					}									
 				}*/
 
-                // list 내의 정보를 출력		
+                                // list 내의 정보를 출력		
 				for(String[] tmp : list) {
 					System.out.print("ID: "+tmp[0]+", ");
 					System.out.print("PW: "+tmp[1]+", ");
