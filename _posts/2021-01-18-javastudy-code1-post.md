@@ -17,6 +17,7 @@ Java의 JFrame를 이용해 DB의 데이터를 출력하는 코드를 작성한�
 
 * pom.xml 생성: 자바 프로젝트 우클릭 `=>` Configure `=>` Convert to maven project `=>` finish
 * pom.xml 설정: pom.xml 클릭 -> `</build>`와 `</project>` 사이에 `<repositories>`와 `<dependencies>`를 삽입(사용하고자 하는 툴)
+
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
