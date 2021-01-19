@@ -83,7 +83,7 @@ public class DBConn {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			
 			// 2. DB 접속(SQLException) => 서버주소:포트번호:SID, 사용자아이디, 사용자암호
-			connection = DriverManager.getConnection("jdbc:oracle:thin:@1.234.5.158:11521:xe", "id18", "pw18");
+			connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.0.1:4000:xe", "id", "pw");
 			
 			// 3. autocommit 설정 해제
 			connection.setAutoCommit(false);
