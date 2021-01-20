@@ -1,6 +1,6 @@
 ---
 title: "JAVA 스터디: DB-Java 연결 - 2"
-excerpt: "Thread, "
+excerpt: "Thread, DB-Java 연결 후 Jave를 통해 sql문 실행 및 출력"
 
 categories:
     - webprogramming
@@ -583,6 +583,8 @@ public class MemberDAO {
 	}
 }
 ```
+
+### 3. main
 
 ```java
 // 파일 이름: Main.java
