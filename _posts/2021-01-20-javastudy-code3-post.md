@@ -1,6 +1,6 @@
 ---
 title: "JAVA 스터디: DB-Java 연결 - 3"
-excerpt: "DB-Java Java DB Join을 위한 코드 작성"
+excerpt: "DB-Java 테이블 Join을 위한 코드 작성"
 
 categories:
     - webprogramming
