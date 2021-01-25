@@ -161,7 +161,7 @@ public, protected, default, private
 static, final, abstract, native, transient, synchronized, volatile, strictfp
 ```
 
-* static
+* static  
   static이 붙은 멤버 변수와 메소드, 초기화 블럭은 인스턴스를 생성하지 않고도 사용할 수 있다.
   * static 멤버변수
   모든 인스턴스에 공통적으로 사용되는 클래스 변수가 된다.  
@@ -248,7 +248,8 @@ public class Main {
 }
 ```
 
-> 답은 아래와 같다.
+> 답은 아래와 같다.  
+
 ```java
 class Student extends Person {
     String major;
