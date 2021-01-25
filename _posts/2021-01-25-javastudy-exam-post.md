@@ -305,7 +305,9 @@ public class DBConn {
 }
 ```
 
-> 답은 아래와 같다.
+> 답은 아래와 같다.  
+
+
 ```java
 public class DBConn {
     private static Connection conn = null;
