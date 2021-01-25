@@ -152,6 +152,7 @@ public class Main {
 자바의 제어자와 접근 제어자에 대해 정리해보자.
 1. 제어자(modifier)
 클래스, 변수, 메소드의 선언부에 사용되어 부가적인 의미를 부여한다. 제어자의 종류는 다음과 같다.
+
 ```java
 // 접근제어자
 public, protected, default, private
@@ -159,6 +160,7 @@ public, protected, default, private
 // 그 외 제어자
 static, final, abstract, native, transient, synchronized, volatile, strictfp
 ```
+
 * static
   static이 붙은 멤버 변수와 메소드, 초기화 블럭은 인스턴스를 생성하지 않고도 사용할 수 있다.
   * static 멤버변수
